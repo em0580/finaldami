@@ -1,0 +1,378 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商店</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        body, html {
+    overflow-x: hidden;
+}
+
+
+        footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .social-buttons a {
+            margin: 0 5px;
+            text-decoration: none;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <!-- 標誌 -->
+            <a class="navbar-brand" href="index.html">得秘遊樂園</a>
+    
+            <!-- 漢堡按鈕 -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="切換導航">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <!-- 導覽項目 -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <!-- 首頁 -->
+                    <li class="nav-item">
+                        <a class="nav-link " href="destination.html">園區介紹</a>
+                    </li>
+                    <!-- 關於我 -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="關於我.html">關於我</a>
+                    </li>
+                    <!-- 聯絡我們 -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="聯絡我們.html">聯絡我們</a>
+                    </li>
+                    <!-- 登入 (下拉選單) -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="loginDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-user"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="loginDropdown">
+                            <li><a class="dropdown-item" href="consumption.html">商店</a></li>
+                            <li><a class="dropdown-item" href="check-in.html">檢票</a></li>
+                            <li><a class="dropdown-item" href="buy-ticket.html">購票</a></li>
+                            <li><a class="dropdown-item" href="top-up.html">卡片儲值</a></li>
+                            <li><a class="dropdown-item" href="balance.html">查詢餘額</a></li>
+                        </ul>
+                    </li>
+    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-language"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="languageDropdown">
+                            <li><a class="dropdown-item" href="index.html">中文</a></li>
+                            <li><a class="dropdown-item" href="index1.html">English</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <main>
+
+        <div class="container mt-5">
+            <h1 class="text-center mb-4">商店</h1>
+
+            <div class="mb-4">
+                <label for="barcodeInput" class="form-label">掃描條碼：</label>
+                <input type="text" id="barcodeInput" class="form-control" placeholder="請掃描條碼" autocomplete="off" />
+                <div id="productInfo" class="mt-3"></div>
+            </div>
+
+
+            <h3>購物車</h3>
+            <div id="cartContainer" class="mb-4">
+                <p>您的購物車是空的</p>
+            </div>
+
+            <div class="mb-4">
+                <label for="rfidConsumeInput" class="form-label visually-hidden">刷卡消費：</label>
+                <input type="text" id="rfidConsumeInput" class="form-control" placeholder="請感應RFID卡片"
+                    style="visibility: hidden; position: absolute;">
+            </div>
+
+            <div id="promptMessage" class="alert alert-info text-center">
+                請感應您的 RFID 卡片以消費扣款。
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2024 得秘遊樂園. 保留所有權利。</p>
+        <p>聯絡方式: info@example.com</p>
+        <div class="social-buttons">
+            <a href="https://www.facebook.com" target="_blank" class="text-white me-2"><i
+                    class="bi bi-facebook"></i></a>
+            <a href="https://www.instagram.com" target="_blank" class="text-white me-2"><i
+                    class="bi bi-instagram"></i></a>
+            <a href="https://www.twitter.com" target="_blank" class="text-white"><i class="bi bi-twitter"></i></a>
+        </div>
+    </footer>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+        import { getDatabase, ref, get, set, push } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js";
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const firebaseConfig = {
+                apiKey: "AIzaSyCGRhmZyeaBCIRwoC-R2D0iiIx2zcXnky4",
+                authDomain: "david2463065-3fe00.firebaseapp.com",
+                databaseURL: "https://david2463065-3fe00-default-rtdb.asia-southeast1.firebasedatabase.app",
+                projectId: "david2463065-3fe00",
+                storageBucket: "david2463065-3fe00.firebasestorage.app",
+                messagingSenderId: "125089446047",
+                appId: "1:125089446047:web:3bf571c29b080ff896caaa"
+            };
+
+            const app = initializeApp(firebaseConfig);
+            const db = getDatabase(app);
+
+            let cart = [];
+
+            function speak(text) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'zh-TW';
+                speechSynthesis.speak(utterance);
+            }
+
+
+
+            // 條碼輸入框的輸入事件
+document.getElementById('barcodeInput').addEventListener('input', async (event) => {
+    const barcode = document.getElementById('barcodeInput').value.trim();
+
+    // 只在條碼格式不正確時顯示錯誤提示
+    if (barcode && !/^\d*$/.test(barcode)) { // 允許空白、數字
+        Swal.fire('錯誤', '條碼格式無效，請輸入有效條碼！', 'error');
+    }
+});
+
+// 條碼輸入框的按鍵事件（主要是 Enter 鍵）
+document.getElementById('barcodeInput').addEventListener('keydown', async (event) => {
+    // 確保只有按 Enter 鍵時才處理條碼
+    if (event.key === 'Enter') {
+        const barcode = document.getElementById('barcodeInput').value.trim();
+
+        if (!barcode) {
+            Swal.fire('錯誤', '請感應有效的條碼！', 'error');
+            return;
+        }
+
+        // 當條碼無效時，不執行任何操作
+        if (!/^\d+$/.test(barcode)) {
+            Swal.fire('錯誤', '條碼格式無效，請輸入有效條碼！', 'error');
+            return;
+        }
+
+        const productRef = ref(db, `products/${barcode}`);
+        const snapshot = await get(productRef);
+
+        // 如果條碼已存在於資料庫
+        if (snapshot.exists()) {
+            const { name, price } = snapshot.val();
+            document.getElementById('productInfo').innerHTML = `商品名稱：${name}<br>價格：${price}元`;
+
+            Swal.fire('資訊', '商品已存在於系統中', 'info');
+
+            // 更新購物車
+            cart.push({ barcode, name, price });
+            updateCart();
+
+            Swal.fire({
+                icon: 'success',
+                title: '商品已加入購物車',
+                text: `${name} 已成功加入您的購物車！`
+            });
+            speak(`${name} 已成功加入購物車，價格是 ${price} 元`);
+        } else {
+            // 商品不存在時，添加到資料庫
+            const randomPrice = Math.floor(Math.random() * (500 - 100 + 1)) + 100;
+            const defaultProduct = { name: `${barcode}`, price: randomPrice };
+            await set(productRef, defaultProduct);
+
+            document.getElementById('productInfo').innerHTML = `商品名稱：${defaultProduct.name}<br>價格：${defaultProduct.price}元`;
+
+            Swal.fire('成功', '新商品已記錄', 'success');
+
+            cart.push({ barcode, ...defaultProduct });
+            updateCart();
+
+            Swal.fire({
+                icon: 'success',
+                title: '商品已加入購物車',
+                text: `${defaultProduct.name} 已成功加入您的購物車！`
+            });
+            speak(`${defaultProduct.name} 已成功加入購物車，價格是 ${defaultProduct.price} 元`);
+        }
+
+        // 清空條碼輸入框並聚焦
+        document.getElementById('barcodeInput').value = '';
+        document.getElementById('barcodeInput').focus();
+    }
+});
+
+// 防止過度阻止事件（確保其他操作可以繼續進行）
+document.getElementById('barcodeInput').addEventListener('keydown', function(event) {
+    if (event.key === 'Backspace' || event.key === 'Delete') {
+        // 不做額外的處理，讓使用者能夠刪除字符
+        return true;
+    }
+});
+
+
+
+
+
+
+            function updateCart() {
+                const cartContainer = document.getElementById('cartContainer');
+                cartContainer.innerHTML = '';
+
+                if (cart.length === 0) {
+                    cartContainer.innerHTML = '<p>您的購物車是空的</p>';
+                    return;
+                }
+
+                cart.forEach(item => {
+                    const itemElement = document.createElement('div');
+                    itemElement.classList.add('cart-item');
+                    itemElement.innerHTML = `
+                        ${item.name} - ${item.price}元
+                        <button class="btn btn-danger btn-sm" onclick="removeFromCart('${item.barcode}')">刪除</button>
+                    `;
+                    cartContainer.appendChild(itemElement);
+                });
+            }
+
+            window.removeFromCart = (barcode) => {
+                cart = cart.filter(item => item.barcode !== barcode);
+                updateCart();
+            };
+
+            let rfidBuffer = "";
+            document.addEventListener("keydown", async (e) => {
+                if (e.target.classList.contains("user-name")) return;
+
+                if (e.key === "Enter") {
+                    e.preventDefault();
+                    const rfid = rfidBuffer.trim();
+                    rfidBuffer = "";
+
+                    if (!rfid) {
+                        console.warn("未檢測到有效的 RFID 卡號");
+                        return;
+                    }
+
+                    if (cart.length === 0) {
+                        Swal.fire('錯誤', '購物車是空的，無法進行消費', 'error');
+                        speak('購物車是空的，無法進行消費');
+                        return;
+                    }
+
+                    try {
+                        const userRef = ref(db, `balances/${rfid}`);
+                        const snapshot = await get(userRef);
+
+                        if (snapshot.exists()) {
+                            const balance = snapshot.val();
+                            const totalAmount = cart.reduce((sum, item) => sum + item.price, 0);
+
+                            if (balance >= totalAmount) {
+                                const newBalance = balance - totalAmount;
+                                await set(userRef, newBalance);
+
+                                try {
+                                    // 取得使用者的 transactions 節點
+                                    const userTransactionsRef = ref(db, `transactions/${rfid}`); // 使用者的交易紀錄節點
+
+                                    // 使用 push 方法將交易紀錄推送到該使用者的 transactions 節點
+                                    const newTransactionRef = await push(userTransactionsRef, {
+                                        type: "消費",  // 交易類型
+                                        amount: totalAmount,  // 消費金額
+                                        timestamp: new Date().toISOString(),  // 當前時間戳
+                                        items: cart,  // 購物車內容
+                                        userId: rfid  // 使用者的 RFID 卡號
+                                    });
+
+                                    console.log("消費紀錄已成功更新至 Firebase，交易 ID: " + newTransactionRef.key);
+
+                                    // 提示使用者交易成功
+                                    Swal.fire('成功', `您總共消費了 ${totalAmount} 元，剩餘餘額：${newBalance} 元`, 'success');
+                                    speak(`您總共消費了 ${totalAmount} 元，剩餘餘額 ${newBalance} 元`);
+
+                                    // 清空購物車並更新顯示
+                                    cart = [];
+                                    updateCart();
+                                } catch (error) {
+                                    console.error("消費紀錄更新失敗：", error);
+                                    Swal.fire('錯誤', '更新交易紀錄時發生錯誤', 'error');
+                                }
+                            } else {
+                                Swal.fire('錯誤', '餘額不足，無法完成消費', 'error');
+                            }
+
+
+
+
+                        } else {
+                            Swal.fire('錯誤', '無法找到該 RFID 卡片的用戶', 'error');
+                        }
+                    } catch (error) {
+                        console.error("消費紀錄更新失敗：", error);
+                        Swal.fire('錯誤', '處理用戶資料時發生錯誤', 'error');
+                    }
+
+
+                } else if (/^\d$/.test(e.key)) {
+                    rfidBuffer += e.key;
+                } else {
+                    e.preventDefault();
+                }
+            });
+
+        });
+    </script>
+</body>
+
+</html>

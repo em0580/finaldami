@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Check Balance</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    footer {
+      background-color: #343a40;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+
+    .social-buttons a {
+      margin: 0 5px;
+      text-decoration: none;
+    }
+
+    /* Custom progress bar color differentiation */
+    /* Background of the progress bar */
+    progress[value] {
+      height: 25px;
+      border-radius: 5px;
+      -webkit-appearance: none;
+      appearance: none;
+      background-color: #f3f3f3;
+      /* Set the background color of the progress bar */
+    }
+
+    /* When the balance is less than 300, set the progress bar color to red */
+    progress.w-75.bg-danger::-webkit-progress-bar {
+      background-color: #f8d7da !important;
+    }
+
+    progress.w-75.bg-danger::-webkit-progress-value {
+      background-color: #dc3545 !important;
+      /* Set the internal color of the progress bar */
+    }
+
+    /* When the balance is between 300 and 700, set the progress bar color to yellow */
+    progress.w-75.bg-warning::-webkit-progress-bar {
+      background-color: #fff3cd !important;
+    }
+
+    progress.w-75.bg-warning::-webkit-progress-value {
+      background-color: #ffc107 !important;
+    }
+
+    /* When the balance is greater than 700, set the progress bar color to green */
+    progress.w-75.bg-success::-webkit-progress-bar {
+      background-color: #d4edda !important;
+    }
+
+    progress.w-75.bg-success::-webkit-progress-value {
+      background-color: #28a745 !important;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <!-- Logo -->
+        <a class="navbar-brand" href="index1.html">DeMi Amusement Park</a>
+
+        <!-- Hamburger button -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navigation items -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <!-- Home -->
+                <li class="nav-item">
+                    <a class="nav-link " href="destination1.html">Park Introduction</a>
+                </li>
+                <!-- About Me -->
+                <li class="nav-item">
+                    <a class="nav-link" href="關於我1.html">About Me</a>
+                </li>
+                <!-- Contact Us -->
+                <li class="nav-item">
+                    <a class="nav-link" href="聯絡我們1.html">Contact Us</a>
+                </li>
+                <!-- Login (Dropdown menu) -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="loginDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="loginDropdown">
+                        <li><a class="dropdown-item" href="consumption1.html">Store</a></li>
+                        <li><a class="dropdown-item" href="check-in1.html">Check-in</a></li>
+                        <li><a class="dropdown-item" href="buy-ticket1.html">Buy Ticket</a></li>
+                        <li><a class="dropdown-item" href="top-up1.html">Card Top-up</a></li>
+                        <li><a class="dropdown-item" href="balance1.html">Check Balance</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-language"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="languageDropdown">
+                        <li><a class="dropdown-item" href="index.html">中文</a></li>
+                        <li><a class="dropdown-item" href="index1.html">English</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+  <main>
+    <div class="container py-5">
+      <h1 class="text-center mb-4">Check Balance</h1>
+      <div class="alert alert-info text-center" id="promptMessage">
+        Please scan your RFID card to check the balance.
+      </div>
+
+      <div id="balanceInfo" class="d-none">
+        <h2 class="text-center">Current Balance:</h2>
+        <div class="text-center">
+          <progress id="balanceProgress" class="w-75" value="0" max="1000"></progress>
+          <h3 id="balanceAmount" class="mt-2">$0</h3>
+        </div>
+      </div>
+      <div id="transactionInfo" class="d-none">
+        <h3 class="text-center mt-4">Transaction History</h3>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Transaction Type</th>
+              <th>Amount</th>
+              <th>Time</th>
+            </tr>
+          </thead>
+          <tbody id="transactionList"></tbody>
+        </table>
+      </div>
+      <div id="errorMessage" class="alert alert-danger d-none">
+        Query failed, please try again later.
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2024 DeMi Amusement Park. All rights reserved.</p>
+    <p>Contact: info@example.com</p>
+    <div class="social-buttons">
+      <a href="https://www.facebook.com" target="_blank" class="text-white me-2"><i class="bi bi-facebook"></i></a>
+      <a href="https://www.instagram.com" target="_blank" class="text-white me-2"><i class="bi bi-instagram"></i></a>
+      <a href="https://www.twitter.com" target="_blank" class="text-white"><i class="bi bi-twitter"></i></a>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+    import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCGRhmZyeaBCIRwoC-R2D0iiIx2zcXnky4",
+      authDomain: "david2463065-3fe00.firebaseapp.com",
+      databaseURL: "https://david2463065-3fe00-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "david2463065-3fe00",
+      storageBucket: "david2463065-3fe00.firebasestorage.app",
+      messagingSenderId: "125089446047",
+      appId: "1:125089446047:web:3bf571c29b080ff896caaa"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+
+    let rfidBuffer = "";
+
+    function numberToWords(num) {
+      const a = [
+        '', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten',
+        'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'
+      ];
+      const b = [
+        '', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'
+      ];
+      const c = [
+        '', 'thousand', 'million', 'billion', 'trillion'
+      ];
+
+      if (num === 0) return 'zero';
+
+      let words = '';
+      let place = 0;
+
+      while (num > 0) {
+        if (num % 1000 !== 0) {
+          words = `${helper(num % 1000)} ${c[place]} ${words}`;
+        }
+        num = Math.floor(num / 1000);
+        place++;
+      }
+
+      return words.trim();
+    }
+
+    function helper(num) {
+      const a = [
+        '', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten',
+        'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'
+      ];
+      const b = [
+        '', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'
+      ];
+
+      if (num === 0) return '';
+      if (num < 20) return a[num];
+      if (num < 100) return b[Math.floor(num / 10)] + (num % 10 !== 0 ? '-' + a[num % 10] : '');
+      return a[Math.floor(num / 100)] + ' hundred' + (num % 100 !== 0 ? ' and ' + helper(num % 100) : '');
+    }
+
+    document.addEventListener("keydown", async (e) => {
+      if (/^\d$/.test(e.key)) {
+        rfidBuffer += e.key;
+        return;
+      }
+
+      if (e.key === "Enter") {
+        e.preventDefault();
+        const rfid = rfidBuffer.trim();
+        rfidBuffer = "";
+
+        if (!rfid) {
+          alert("Please scan a valid RFID card number!");
+          return;
+        }
+
+        const balanceRef = ref(database, `balances/${rfid}`);
+        const transactionsRef = ref(database, `transactions/${rfid}`);
+
+        try {
+          const balanceSnapshot = await get(balanceRef);
+          if (balanceSnapshot.exists()) {
+            const balance = Number(balanceSnapshot.val());
+            const maxBalance = 10000;  // Assume the maximum balance is 10000
+            const progress = document.getElementById("balanceProgress");
+
+            // Set the progress bar max value and current value
+            progress.value = balance;
+            progress.max = maxBalance;
+
+            // Remove old colors and set new ones based on the balance
+            progress.classList.remove("bg-danger", "bg-warning", "bg-success");
+
+            if (balance < 3000) {
+              progress.classList.add("bg-danger");
+            } else if (balance >= 3000 && balance <= 7000) {
+              progress.classList.add("bg-warning");
+            } else {
+              progress.classList.add("bg-success");
+            }
+
+            // Display the formatted balance
+            document.getElementById("balanceAmount").textContent = `$${balance.toLocaleString()}`;
+            document.getElementById("balanceInfo").classList.remove("d-none");
+
+            // Voice feedback on balance status
+            let statusMessage = '';
+            if (balance < 3000) {
+              statusMessage = `Your balance is ${numberToWords(balance)} dollars, it's too low, please top-up soon.`;
+            } else if (balance >= 3000 && balance <= 7000) {
+              statusMessage = `Your balance is ${numberToWords(balance)} dollars, please monitor your balance.`;
+            } else {
+              statusMessage = `Your balance is ${numberToWords(balance)} dollars, your balance is sufficient.`;
+            }
+
+            const msg = new SpeechSynthesisUtterance(statusMessage);
+            window.speechSynthesis.speak(msg);
+          } else {
+            document.getElementById("balanceAmount").textContent = "$0";
+            document.getElementById("balanceInfo").classList.remove("d-none");
+
+            // Voice feedback when balance is zero
+            const msg = new SpeechSynthesisUtterance("Your balance is zero, please top-up soon.");
+            window.speechSynthesis.speak(msg);
+          }
+
+          const transactionsSnapshot = await get(transactionsRef);
+          const transactionList = document.getElementById("transactionList");
+          transactionList.innerHTML = "";
+
+          if (transactionsSnapshot.exists()) {
+            const now = new Date();
+            const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
+            const tomorrowStart = todayStart + 24 * 60 * 60 * 1000;
+
+            transactionsSnapshot.forEach((child) => {
+              const transaction = child.val();
+              const transactionTime = new Date(transaction.timestamp).getTime();
+
+              if (transactionTime >= todayStart && transactionTime < tomorrowStart) {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+              <td>${transaction.type || "Undefined"}</td>
+              <td>$${transaction.amount || 0}</td>
+              <td>${new Date(transaction.timestamp).toLocaleString()}</td>
+            `;
+                transactionList.appendChild(row);
+              }
+            });
+
+            if (transactionList.children.length > 0) {
+              document.getElementById("transactionInfo").classList.remove("d-none");
+              const msg = new SpeechSynthesisUtterance("Today's transaction records are displayed.");
+              window.speechSynthesis.speak(msg);
+            } else {
+              document.getElementById("transactionInfo").classList.add("d-none");
+              const msg = new SpeechSynthesisUtterance("There are no transactions today.");
+              window.speechSynthesis.speak(msg);
+            }
+          } else {
+            document.getElementById("transactionInfo").classList.add("d-none");
+            const msg = new SpeechSynthesisUtterance("There are no transactions today.");
+            window.speechSynthesis.speak(msg);
+          }
+        } catch (error) {
+          console.error("Query failed:", error);
+          document.getElementById("errorMessage").classList.remove("d-none");
+
+          // Voice feedback for query failure
+          const msg = new SpeechSynthesisUtterance("Query failed, please try again later.");
+          window.speechSynthesis.speak(msg);
+        }
+      }
+    });
+
+  </script>
+
+</body>
+
+</html>

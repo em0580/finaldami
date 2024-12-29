@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>園區遊樂設施介紹</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content {
+            flex: 1;
+        }
+
+        footer {
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 導覽列 -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <!-- 標誌 -->
+            <a class="navbar-brand" href="index.html">得秘遊樂園</a>
+    
+            <!-- 漢堡按鈕 -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="切換導航">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <!-- 導覽項目 -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <!-- 首頁 -->
+                    <li class="nav-item">
+                        <a class="nav-link " href="destination.html">園區介紹</a>
+                    </li>
+                    <!-- 關於我 -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="關於我.html">關於我</a>
+                    </li>
+                    <!-- 聯絡我們 -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="聯絡我們.html">聯絡我們</a>
+                    </li>
+                    <!-- 登入 (下拉選單) -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="loginDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-user"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="loginDropdown">
+                            <li><a class="dropdown-item" href="consumption.html">商店</a></li>
+                            <li><a class="dropdown-item" href="check-in.html">檢票</a></li>
+                            <li><a class="dropdown-item" href="buy-ticket.html">購票</a></li>
+                            <li><a class="dropdown-item" href="top-up.html">卡片儲值</a></li>
+                            <li><a class="dropdown-item" href="balance.html">查詢餘額</a></li>
+                        </ul>
+                    </li>
+    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-language"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="languageDropdown">
+                            <li><a class="dropdown-item" href="index.html">中文</a></li>
+                            <li><a class="dropdown-item" href="index1.html">English</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+
+    <!-- 主內容區域 -->
+    <div class="content">
+        <div id="rides" class="container my-5">
+            <h2 class="text-center mb-4">熱門遊樂設施</h2>
+            <div class="row g-4">
+                <!-- 設施卡片 1 -->
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <img src="photo/艾芝迷你雲霄飛車.jpg" class="card-img-top" alt="艾芝迷你雲霄飛車">
+                        <div class="card-body">
+                            <h5 class="card-title">艾芝迷你雲霄飛車</h5>
+                            <p class="card-text">利用橡果打造的雲霄飛車，是天才發明家艾芝的最新傑作。</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 設施卡片 2 -->
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <img src="photo/小飛象.jpg" class="card-img-top" alt="小飛象">
+                        <div class="card-body">
+                            <h5 class="card-title">小飛象</h5>
+                            <p class="card-text">讓小飛象載著您翱翔天空！。</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 設施卡片 3 -->
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <img src="photo/城堡奇緣.jpg" class="card-img-top" alt="城堡奇緣">
+                        <div class="card-body">
+                            <h5 class="card-title">美女與野獸「城堡奇緣」</h5>
+                            <p class="card-text">乘坐搖擺律動的魔法茶杯，深入真愛故事編織的美妙世界！</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 設施卡片 4 -->
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <img src="photo/小飛俠天空之旅.jpg" class="card-img-top" alt="小飛俠天空之旅">
+                        <div class="card-body">
+                            <h5 class="card-title">小飛俠天空之旅</h5>
+                            <p class="card-text">海盜船載您遨遊夜空，飛向夢幻島！</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 設施卡片 5 -->
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <img src="photo/小熊維尼獵蜜記.jpg" class="card-img-top" alt="小熊維尼獵蜜記">
+                        <div class="card-body">
+                            <h5 class="card-title">小熊維尼獵蜜記</h5>
+                            <p class="card-text">坐進蜂蜜甕，出發尋找小熊維尼最喜愛的蜂蜜吧！</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 設施卡片 6 -->
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <img src="photo/米奇魔法交響樂.jpg" class="card-img-top" alt="米奇魔法交響樂">
+                        <div class="card-body">
+                            <h5 class="card-title">米奇魔法交響樂</h5>
+                            <p class="card-text">由米奇指揮的演奏會，卻因唐老鴨的攪局帶來了意外發展?!</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 設施卡片 7 -->
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <img src="photo/星際旅行：冒險續航.jpg" class="card-img-top" alt="星際旅行：冒險續航">
+                        <div class="card-body">
+                            <h5 class="card-title">星際旅行：冒險續航</h5>
+                            <p class="card-text">當您坐進「星速 1000」，一段難以預測的刺激冒險就此開始！</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 設施卡片 8 -->
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <img src="photo/杯麵歡樂之旅.jpg" class="card-img-top" alt="杯麵歡樂之旅">
+                        <div class="card-body">
+                            <h5 class="card-title">杯麵歡樂之旅</h5>
+                            <p class="card-text">坐上醫療用機器人牽引的乘具，享受移動方式變幻莫測的極致暢快！</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 設施卡片 9 -->
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <img src="photo/怪獸電力公司「迷藏巡遊車」.jpg" class="card-img-top" alt="怪獸電力公司「迷藏巡遊車」">
+                        <div class="card-body">
+                            <h5 class="card-title">怪獸電力公司「迷藏巡遊車」</h5>
+                            <p class="card-text">搭上巡遊車、亮起手電筒，前來找出逗趣的怪獸們吧！</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 設施卡片 10 -->
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <img src="photo/威尼斯貢多拉遊船.jpg" class="card-img-top" alt="威尼斯貢多拉遊船">
+                        <div class="card-body">
+                            <h5 class="card-title">威尼斯貢多拉遊船</h5>
+                            <p class="card-text">浪漫無比的貢多拉之旅，載您遊覽魅力無窮的運河美景。</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 設施卡片 11 -->
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <img src="photo/驚魂古塔.jpg" class="card-img-top" alt="驚魂古塔">
+                        <div class="card-body">
+                            <h5 class="card-title">驚魂古塔</h5>
+                            <p class="card-text">當電梯向最高樓層上升，令人毛骨悚然的恐怖體驗即將發生……。</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 設施卡片 12 -->
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <img src="photo/忿怒雙神.jpg" class="card-img-top" alt="忿怒雙神">
+                        <div class="card-body">
+                            <h5 class="card-title">忿怒雙神</h5>
+                            <p class="card-text">讓 360 度翻轉的雲霄飛車，載著您穿梭古代神像的考古現場！</p>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white text-center position-relative">
+        <p>© 2024 得秘遊樂園. 保留所有權利。</p>
+        <p>聯絡方式: info@example.com</p>
+        <div class="social-buttons">
+            <a href="https://www.facebook.com" target="_blank" class="text-white me-2"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.instagram.com" target="_blank" class="text-white me-2"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.twitter.com" target="_blank" class="text-white"><i class="bi bi-twitter"></i></a>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

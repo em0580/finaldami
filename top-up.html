@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>儲值系統</title>
+  <!-- 引入 Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <!-- 添加 Bootstrap Icons -->
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    footer {
+      background-color: #343a40;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+
+    .social-buttons a {
+      margin: 0 5px;
+      text-decoration: none;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- 頂部導航 -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <!-- 標誌 -->
+      <a class="navbar-brand" href="index.html">得秘遊樂園</a>
+
+      <!-- 漢堡按鈕 -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="切換導航">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- 導覽項目 -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <!-- 首頁 -->
+          <li class="nav-item">
+            <a class="nav-link " href="destination.html">園區介紹</a>
+          </li>
+          <!-- 關於我 -->
+          <li class="nav-item">
+            <a class="nav-link" href="關於我.html">關於我</a>
+          </li>
+          <!-- 聯絡我們 -->
+          <li class="nav-item">
+            <a class="nav-link" href="聯絡我們.html">聯絡我們</a>
+          </li>
+          <!-- 登入 (下拉選單) -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="loginDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <i class="fas fa-user"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="loginDropdown">
+              <li><a class="dropdown-item" href="consumption.html">商店</a></li>
+              <li><a class="dropdown-item" href="check-in.html">檢票</a></li>
+              <li><a class="dropdown-item" href="buy-ticket.html">購票</a></li>
+              <li><a class="dropdown-item" href="top-up.html">卡片儲值</a></li>
+              <li><a class="dropdown-item" href="balance.html">查詢餘額</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <i class="fas fa-language"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="languageDropdown">
+              <li><a class="dropdown-item" href="index.html">中文</a></li>
+              <li><a class="dropdown-item" href="index1.html">English</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <main>
+    <!-- 儲值區 -->
+    <div class="container py-5">
+      <h1 class="text-center mb-4">儲值系統</h1>
+      <div class="alert alert-info text-center" id="promptMessage">
+        請讀取您的 RFID 卡片以進行儲值。
+      </div>
+      <div class="mb-3">
+        <label class="form-label">快速選擇儲值金額</label>
+        <div class="d-flex justify-content-center">
+          <button type="button" class="btn btn-outline-primary mx-2 preset-amount" data-amount="100">$100</button>
+          <button type="button" class="btn btn-outline-primary mx-2 preset-amount" data-amount="200">$200</button>
+          <button type="button" class="btn btn-outline-primary mx-2 preset-amount" data-amount="500">$500</button>
+          <button type="button" class="btn btn-outline-primary mx-2 preset-amount" data-amount="1000">$1000</button>
+          <button type="button" class="btn btn-outline-primary mx-2 preset-amount" data-amount="2000">$2000</button>
+          <button type="button" class="btn btn-outline-secondary mx-2" id="customAmountButton">自訂金額</button>
+        </div>
+        <div id="customAmountInputContainer" class="mt-3 d-none">
+          <input type="number" class="form-control" id="customAmountInput" placeholder="請輸入金額">
+          <button type="button" class="btn btn-primary mt-2" id="setCustomAmountButton">確認</button>
+        </div>
+      </div>
+      <h3 class="text-center mt-4">目前累計金額：<span id="totalAmount">$0</span></h3>
+      <div id="successMessage" class="alert alert-success text-center d-none" role="alert">
+        儲值成功！資料已更新。
+      </div>
+      <div id="errorMessage" class="alert alert-danger text-center d-none" role="alert">
+        儲值失敗！請重試。
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2024 得秘遊樂園. 保留所有權利。</p>
+    <p>聯絡方式: info@example.com</p>
+    <div class="social-buttons">
+      <a href="https://www.facebook.com" target="_blank" class="text-white me-2"><i class="bi bi-facebook"></i></a>
+      <a href="https://www.instagram.com" target="_blank" class="text-white me-2"><i class="bi bi-instagram"></i></a>
+      <a href="https://www.twitter.com" target="_blank" class="text-white"><i class="bi bi-twitter"></i></a>
+    </div>
+  </footer>
+
+  <!-- 引入 Bootstrap JS 和 Firebase -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+    import { getDatabase, ref, get, update, push, set } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js";
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyCGRhmZyeaBCIRwoC-R2D0iiIx2zcXnky4",
+      authDomain: "david2463065-3fe00.firebaseapp.com",
+      databaseURL: "https://david2463065-3fe00-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "david2463065-3fe00",
+      storageBucket: "david2463065-3fe00.firebasestorage.app",
+      messagingSenderId: "125089446047",
+      appId: "1:125089446047:web:3bf571c29b080ff896caaa"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+
+    let rfidBuffer = "";
+    let totalAmount = 0;
+    let timeout = null;
+
+    const totalAmountDisplay = document.getElementById("totalAmount");
+
+    // 處理快速選擇金額按鈕
+    document.querySelectorAll(".preset-amount").forEach((button) => {
+      button.addEventListener("click", () => {
+        totalAmount = parseInt(button.getAttribute("data-amount"), 10);
+        totalAmountDisplay.textContent = `$${totalAmount}`;
+      });
+    });
+
+    // 自訂金額邏輯
+    const customAmountButton = document.getElementById("customAmountButton");
+    const customAmountInputContainer = document.getElementById("customAmountInputContainer");
+    const customAmountInput = document.getElementById("customAmountInput");
+    const setCustomAmountButton = document.getElementById("setCustomAmountButton");
+
+    // 點擊「自訂金額」按鈕時顯示輸入框
+    customAmountButton.addEventListener("click", () => {
+      customAmountInputContainer.classList.remove("d-none");
+    });
+
+    // 確認自訂金額
+    // 儲值系統邏輯調整
+
+    // 確認自訂金額
+    setCustomAmountButton.addEventListener("click", () => {
+      const customAmount = parseInt(customAmountInput.value, 10);
+      if (!isNaN(customAmount) && customAmount > 0) {
+        totalAmount = customAmount;  // 更新 totalAmount 為自訂金額
+        totalAmountDisplay.textContent = `$${totalAmount}`;
+        customAmountInputContainer.classList.add("d-none"); // 隱藏輸入框
+        customAmountInput.value = ""; // 清空輸入框
+      } else {
+        alert("請輸入有效的金額！");
+      }
+    });
+
+    // RFID 卡片讀取邏輯
+    document.addEventListener("keydown", async (e) => {
+      if (/^\d$/.test(e.key)) {
+        rfidBuffer += e.key;
+
+        if (timeout) clearTimeout(timeout);
+        timeout = setTimeout(() => (rfidBuffer = ""), 5000);
+        return;
+      }
+
+      if (e.key === "Enter") {
+        e.preventDefault();
+        if (!rfidBuffer) {
+          alert("請感應有效的 RFID 卡號！");
+          return;
+        }
+
+        const rfid = rfidBuffer.trim();
+        rfidBuffer = ""; // 清空緩衝區
+        clearTimeout(timeout);
+
+        if (totalAmount <= 0) {
+          alert("請先選擇儲值金額！");
+          return;
+        }
+
+        const balanceRef = ref(database, `balances/${rfid}`);
+        const transactionsRef = ref(database, `transactions/${rfid}`);
+
+        try {
+          const balanceSnapshot = await get(balanceRef);
+          let balance = 0;
+          if (balanceSnapshot.exists()) {
+            const balanceData = balanceSnapshot.val();
+            balance = typeof balanceData === "object" && balanceData.balance !== undefined
+              ? balanceData.balance
+              : parseInt(balanceData, 10);
+          }
+
+          // 更新餘額 (僅更新該卡片的餘額)
+          const newBalance = balance + totalAmount;  // 這裡的 totalAmount 只與卡片儲值相關
+          await set(balanceRef, newBalance);
+
+          // 新增交易記錄
+          await push(transactionsRef, {
+            type: "儲值",
+            amount: totalAmount,
+            timestamp: new Date().toISOString(),
+          });
+
+          // 儲值成功後語音播報
+          speak("儲值成功，資料已更新");
+
+          document.getElementById("successMessage").classList.remove("d-none");
+          document.getElementById("errorMessage").classList.add("d-none");
+          totalAmount = 0; // 重置累計金額
+          totalAmountDisplay.textContent = "$0";  // 顯示 $0
+        } catch (error) {
+          console.error("儲值失敗：", error);
+
+          // 儲值失敗後語音播報
+          speak("儲值失敗，請重試");
+
+          document.getElementById("errorMessage").classList.remove("d-none");
+          document.getElementById("successMessage").classList.add("d-none");
+        }
+      } else {
+        e.preventDefault();
+      }
+    });
+
+
+    // 語音播報功能
+    function speak(message) {
+      const speech = new SpeechSynthesisUtterance(message);
+      speech.lang = "zh-TW"; // 設定語言為繁體中文
+      window.speechSynthesis.speak(speech);
+    }
+  </script>
+</body>
+
+</html>

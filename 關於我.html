@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>關於得秘神秘人</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- 添加 Bootstrap Icons -->
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        main {
+    display: flex;
+    justify-content: center; /* 水平置中 */
+    align-items: center; /* 垂直置中 */
+    height: calc(100vh - 60px); /* 確保高度滿足視窗大小，減去 footer 的高度 */
+}
+
+        footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            width: 100%;
+            position: relative;
+        }
+
+        /* 基本樣式設定 */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            /* 淺灰背景 */
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        /* 側邊欄樣式 */
+        .sidebar {
+            width: 250px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-right: 20px;
+            transition: transform 0.3s ease;
+            /* 增加過渡效果 */
+        }
+
+        /* 側邊欄標題樣式 */
+        .sidebar h3 {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            /* 增加字母間距 */
+        }
+
+        /* 側邊欄項目樣式 */
+        .sidebar h4 {
+            font-size: 1.1rem;
+            margin: 10px 0;
+            text-align: center;
+            color: #333;
+            cursor: pointer;
+            transition: color 0.3s ease, transform 0.3s ease;
+            /* 增加過渡效果 */
+        }
+
+        /* 側邊欄項目hover效果 */
+        .sidebar h4:hover {
+            color: #007bff;
+            transform: scale(1.05);
+            /* 項目放大效果 */
+        }
+
+        /* 側邊欄連結樣式 */
+        .sidebar a {
+            text-decoration: none;
+            color: inherit;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        /* 側邊欄連結hover效果 */
+        .sidebar a:hover {
+            color: #007bff;
+        }
+
+        /* 增加圓角和陰影效果，並為每個項目加上漸層背景 */
+        .sidebar h4 a {
+            padding: 8px;
+            border-radius: 8px;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar h4 a:hover {
+            background-color: #f0f8ff;
+        }
+
+
+        .content {
+            flex: 1;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+
+
+        .content img {
+            height: 150px;
+            width: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        
+        .content h4 {
+    text-align: left;
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 20px;
+    font-weight: 600;
+    padding: 10px 20px;
+    background: linear-gradient(90deg, #618ebf, #6116c9, #e011b3); /* 多色漸層 */
+    border-radius: 15px; /* 圓角效果 */
+    display: inline-block;
+}
+
+.content h4:hover {
+    background-color: #0056b3; /* hover時背景顏色變化 */
+}
+
+
+
+        .content p {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .content p b {
+            font-weight: bold;
+            color: #007bff;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- 導覽列 -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <!-- 標誌 -->
+            <a class="navbar-brand" href="index.html">得秘遊樂園</a>
+    
+            <!-- 漢堡按鈕 -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="切換導航">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <!-- 導覽項目 -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <!-- 首頁 -->
+                    <li class="nav-item">
+                        <a class="nav-link " href="destination.html">園區介紹</a>
+                    </li>
+                    <!-- 關於我 -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="關於我.html">關於我</a>
+                    </li>
+                    <!-- 聯絡我們 -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="聯絡我們.html">聯絡我們</a>
+                    </li>
+                    <!-- 登入 (下拉選單) -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="loginDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-user"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="loginDropdown">
+                            <li><a class="dropdown-item" href="consumption.html">商店</a></li>
+                            <li><a class="dropdown-item" href="check-in.html">檢票</a></li>
+                            <li><a class="dropdown-item" href="buy-ticket.html">購票</a></li>
+                            <li><a class="dropdown-item" href="top-up.html">卡片儲值</a></li>
+                            <li><a class="dropdown-item" href="balance.html">查詢餘額</a></li>
+                        </ul>
+                    </li>
+    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-language"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="languageDropdown">
+                            <li><a class="dropdown-item" href="index.html">中文</a></li>
+                            <li><a class="dropdown-item" href="index1.html">English</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+
+
+    <main style="display: flex; justify-content: center; align-items: center; height: calc(100vh - 60px);">
+        <div class="container">
+            <div class="sidebar">
+                <h3>得秘神秘人</h3>
+                <h4><a href="#" onclick="showSection('certifications')">香菜</a></h4>
+                <h4><a href="#" onclick="showSection('leadership')">小蔡</a></h4>
+            </div>
+            <div class="content">
+                <div id="contentArea">
+                    <img src="https://i.pinimg.com/236x/09/f9/00/09f900fefaca7b6d97a62a6915558247.jpg" alt="我的照片"
+                        class="img-fluid rounded-circle mx-auto d-block mb-4"
+                        style="height: 150px; width: 150px; object-fit: cover;">
+                    <h4>林香賢</h4>
+                    <p>目前是國立虎尾科技大學資管系的二年級學生，對資訊管理及相關科技領域有著濃厚的興趣。</p>
+                    <p>我積極<b>學習程式設計、資料分析等技能，並參與技術相關的活動與專案，提升自己的專業能力。</b></p>
+                    <p>我喜歡將理論與實際結合，特別是在網頁設計和遊戲開發中展現了極大的創意與熱情。</p>
+                    <p>我也時刻關注最新的技術趨勢，如區塊鏈、人工智慧和大數據分析，並希望將這些技術應用於解決生活中的實際問題。</p>
+                    <p>除了學業，我還熱愛音樂，尤其是唱歌，並且喜歡收集來自世界各地的明信片，這些興趣讓我在學習之餘能夠放鬆身心，同時也拓展了國際視野。</p>
+                    <p>我是一位富有學習動力和創造力的學生，對未來在資訊科技領域的發展充滿期待，希望透過自己的專業知識為社會帶來正面的影響。</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+
+    <footer>
+        <p>© 2024 得秘遊樂園. 保留所有權利。</p>
+        <p>聯絡方式: info@example.com</p>
+        <div class="social-buttons">
+            <a href="https://www.facebook.com" target="_blank" class="text-white me-2"><i
+                    class="bi bi-facebook"></i></a>
+            <a href="https://www.instagram.com" target="_blank" class="text-white me-2"><i
+                    class="bi bi-instagram"></i></a>
+            <a href="https://www.twitter.com" target="_blank" class="text-white"><i class="bi bi-twitter"></i></a>
+        </div>
+    </footer>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const sections = {
+            certifications: ` 
+
+                <img src="https://i.pinimg.com/236x/09/f9/00/09f900fefaca7b6d97a62a6915558247.jpg" alt="我的照片" class="img-fluid rounded-circle mx-auto d-block mb-4" style="height: 150px; width: 150px; object-fit: cover;">
+                <h4>林香賢</h4>
+                <p>目前是國立虎尾科技大學資管系的二年級學生，對資訊管理及相關科技領域有著濃厚的興趣。</p>
+                <p>我積極<b>學習程式設計、資料分析等技能，並參與技術相關的活動與專案，提升自己的專業能力。</b></p>
+                <p>我喜歡將理論與實際結合，特別是在網頁設計和遊戲開發中展現了極大的創意與熱情。</p>
+                <p>我也時刻關注最新的技術趨勢，如區塊鏈、人工智慧和大數據分析，並希望將這些技術應用於解決生活中的實際問題。</p>
+                <p>除了學業，我還熱愛音樂，尤其是唱歌，並且喜歡收集來自世界各地的明信片，這些興趣讓我在學習之餘能夠放鬆身心，同時也拓展了國際視野。</p>
+                <p>我是一位富有學習動力和創造力的學生，對未來在資訊科技領域的發展充滿期待，希望透過自己的專業知識為社會帶來正面的影響。</p>
+            `,
+            leadership: `
+
+                <img src="https://i.pinimg.com/236x/e5/45/46/e54546c0013096096b19ff09cbad798f.jpg" alt="我的照片" class="img-fluid rounded-circle mx-auto d-block mb-4" style="height: 150px; width: 150px; object-fit: cover;">
+                <h4>蔡宜茹</h4>
+                <p>目前就讀於國立虎尾科技大學資管系二年級，對於資訊管理與科技創新充滿熱情與好奇。</p>
+                <p>我熱衷於<b>探索新技術，學習如 Python 程式設計、資料分析及視覺化等技能，並積極參與校內外的專案與競賽。</b></p>
+                <p>在學習過程中，我展現了對解決問題的敏銳度，尤其在開發互動式應用與數位解決方案時，能結合創意與技術，實現實際效益。</p>
+                <p>對於當前熱門技術如人工智慧、物聯網和大數據管理尤為感興趣，希望未來能將這些技術應用於智慧城市建設或社會公益項目。</p>
+                <p>除了學術上的努力，我也擁有豐富的課外興趣，包括旅行與拍攝風景照片，透過影像記錄下不同文化與自然的美好，進一步激發我的創作靈感。</p>
+                <p>我是一名目標明確且充滿行動力的學生，立志在資訊科技領域發揮專長，透過創新與合作，為世界帶來實質的改變。</p>
+            `,
+        };
+
+        function showSection(section) {
+            document.getElementById('contentArea').innerHTML = sections[section];
+        }
+    </script>
+
+</body>
+
+</html>

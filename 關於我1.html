@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About the mysterious people of Demi</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- Add Bootstrap Icons -->
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            /* Horizontally center */
+            align-items: center;
+            /* vertical center */
+            height: calc(100vh - 60px);
+            /* Make sure the height meets the viewport size, minus the height of the footer */
+        }
+
+        footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            width: 100%;
+            position: relative;
+        }
+
+        /* Basic style settings */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            /* Light gray background */
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        /* Sidebar style */
+        .sidebar {
+            width: 250px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-right: 20px;
+            transition: transform 0.3s ease;
+            /* Add transition effect */
+        }
+
+        /* Sidebar title style */
+        .sidebar h3 {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            /* Increase letter spacing */
+        }
+
+        /* Sidebar item style */
+        .sidebar h4 {
+            font-size: 1.1rem;
+            margin: 10px 0;
+            text-align: center;
+            color: #333;
+            cursor: pointer;
+            transition: color 0.3s ease, transform 0.3s ease;
+            /* Add transition effect */
+        }
+
+        /* Sidebar item hover effect */
+        .sidebar h4:hover {
+            color: #007bff;
+            transform: scale(1.05);
+            /* Project magnification effect */
+        }
+
+        /* Sidebar link style */
+        .sidebar a {
+            text-decoration: none;
+            color: inherit;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        /* Sidebar link hover effect */
+        .sidebar a:hover {
+            color: #007bff;
+        }
+
+        /* Add rounded corners and shadow effects, and add a gradient background to each item */
+        .sidebar h4 a {
+            padding: 8px;
+            border-radius: 8px;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar h4 a:hover {
+            background-color: #f0f8ff;
+        }
+
+
+        .content {
+            flex: 1;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+
+
+        .content img {
+            height: 150px;
+            width: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+
+        .content h4 {
+            text-align: left;
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 20px;
+            font-weight: 600;
+            padding: 10px 20px;
+            background: linear-gradient(90deg, #618ebf, #6116c9, #e011b3);
+            /* Multi-color gradient */
+            border-radius: 15px;
+            /* rounded corner effect */
+            display: inline-block;
+        }
+
+        .content h4:hover {
+            background-color: #0056b3;
+            /* Background color changes when hovering */
+        }
+
+
+
+        .content p {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .content p b {
+            font-weight: bold;
+            color: #007bff;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <!-- Logo -->
+            <a class="navbar-brand" href="index1.html">DeMi Amusement Park</a>
+    
+            <!-- Hamburger button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <!-- Navigation items -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <!-- Home -->
+                    <li class="nav-item">
+                        <a class="nav-link " href="destination1.html">Park Introduction</a>
+                    </li>
+                    <!-- About Me -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="關於我1.html">About Me</a>
+                    </li>
+                    <!-- Contact Us -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="聯絡我們1.html">Contact Us</a>
+                    </li>
+                    <!-- Login (Dropdown menu) -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="loginDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-user"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="loginDropdown">
+                            <li><a class="dropdown-item" href="consumption1.html">Store</a></li>
+                            <li><a class="dropdown-item" href="check-in1.html">Check-in</a></li>
+                            <li><a class="dropdown-item" href="buy-ticket1.html">Buy Ticket</a></li>
+                            <li><a class="dropdown-item" href="top-up1.html">Card Top-up</a></li>
+                            <li><a class="dropdown-item" href="balance1.html">Check Balance</a></li>
+                        </ul>
+                    </li>
+    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-language"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="languageDropdown">
+                            <li><a class="dropdown-item" href="index.html">中文</a></li>
+                            <li><a class="dropdown-item" href="index1.html">English</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <main style="display: flex; justify-content: center; align-items: center; height: calc(100vh - 60px);">
+        <div class="container">
+            <div class="sidebar">
+                <h3>The mysterious man</h3>
+                <h4><a href="#" onclick="showSection('certifications')">Coriander</a></h4>
+                <h4><a href="#" onclick="showSection('leadership')">Xiao Cai</a></h4>
+            </div>
+            <div class="content">
+                <div id="contentArea">
+                    <img src="https://i.pinimg.com/236x/09/f9/00/09f900fefaca7b6d97a62a6915558247.jpg" alt="My photo"
+                        class="img-fluid rounded-circle mx-auto d-block mb-4"
+                        style="height: 150px; width: 150px; object-fit: cover;">
+                    <h4>Lin Xiangxian</h4>
+                    <p>Currently a sophomore student in the Department of Information Management at the National Huwei
+                        University of Science and Technology, I have a strong interest in information management and
+                        related technology fields. </p>
+                    <p>I actively <b>learn programming, data analysis and other skills, 
+                        and participate in technology-related activities and projects to enhance my professional capabilities. </b></p>                    
+                    <p>I like to combine theory with practice, especially showing great creativity and enthusiasm in web
+                        design and game development. </p>
+                    <p>I also keep an eye on the latest technology trends, such as blockchain, artificial intelligence,
+                        and big data analysis, and hope to apply these technologies to solve real-life problems. </p>
+                    <p>In addition to academic studies, I also love music, especially singing, and I like collecting
+                        postcards from all over the world. These interests allow me to relax after studying and also
+                        expand my international horizons. </p>
+                    <p>I am a motivated and creative student who is full of expectations for future development in the
+                        field of information technology. I hope to bring a positive impact to society through my
+                        professional knowledge. </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <footer>
+        <p>© 2024 DeMi Amusement Park. All rights reserved. </p>
+        <p>Contact: info@example.com</p>
+        <div class="social-buttons">
+            <a href="https://www.facebook.com" target="_blank" class="text-white me-2"><i
+                    class="bi bi-facebook"></i></a>
+            <a href="https://www.instagram.com" target="_blank" class="text-white me-2"><i
+                    class="bi bi-instagram"></i></a>
+            <a href="https://www.twitter.com" target="_blank" class="text-white"><i class="bi bi-twitter"></i></a>
+        </div>
+    </footer>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const sections = {
+            certifications: `
+
+                <img src="https://i.pinimg.com/236x/09/f9/00/09f900fefaca7b6d97a62a6915558247.jpg" alt="My photo" class="img-fluid rounded-circle mx-auto d-block mb -4" style="height: 150px; width: 150px; object-fit: cover;">
+                <h4>Lin Xiangxian</h4>
+                <p>Currently a sophomore student in the Department of Information Management at the National Huwei University of Science and Technology, I have a strong interest in information management and related technology fields. </p>
+                <p>I actively <b>learn programming, data analysis and other skills, and participate in technology-related activities and projects to enhance my professional capabilities. </b></p>
+                <p>I like to combine theory with practice, especially showing great creativity and enthusiasm in web design and game development. </p>
+                <p>I also keep an eye on the latest technology trends, such as blockchain, artificial intelligence, and big data analysis, and hope to apply these technologies to solve real-life problems. </p>
+                <p>In addition to academics, I also love music, especially singing, and I like collecting postcards from all over the world. These interests allow me to relax after studying and also expand my international horizons. </p>
+                <p>I am a motivated and creative student who is full of expectations for future development in the field of information technology. I hope to bring a positive impact to society through my professional knowledge. </p>
+                `,
+            leadership: `
+
+                <img src="https://i.pinimg.com/236x/e5/45/46/e54546c0013096096b19ff09cbad798f.jpg" alt="My photo" class="img-fluid rounded-circle mx-auto d-block mb -4" style="height: 150px; width: 150px; object-fit: cover;">
+                <h4>Cai Yiru</h4>
+                <p>Currently a sophomore student in the Department of Information Management at National Huwei University of Science and Technology, I am passionate and curious about information management and technological innovation. </p>
+                <p>I am keen to <b>explore new technologies, learn skills such as Python programming, data analysis and visualization, and actively participate in projects and competitions both inside and outside the school. </b></p>                
+                <p>During my studies, I have demonstrated my keen problem-solving skills, particularly in developing interactive applications and digital solutions that combine creativity and technology to achieve real benefits. </p>
+                <p>I am particularly interested in current hot technologies such as artificial intelligence, the Internet of Things, and big data management, and hope to apply these technologies to smart city construction or social welfare projects in the future. </p>
+                <p>In addition to my academic efforts, I also have a wide range of extracurricular interests, including traveling and taking landscape photos. Recording the beauty of different cultures and nature through images further inspires my creative inspiration. </p>
+                <p>I am a student with clear goals and full of drive. I aspire to use my expertise in the field of information technology to bring substantial changes to the world through innovation and collaboration. </p>
+                `,
+                        };
+
+        function showSection(section) {
+            document.getElementById('contentArea').innerHTML = sections[section];
+        }
+    </script>
+
+</body>
+
+</HTML>

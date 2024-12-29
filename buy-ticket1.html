@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ticket Booking System</title>
+  <!-- Link to Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"> <!-- Adding Bootstrap Icons -->
+
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      margin: 0;
+    }
+  
+    main {
+      flex: 1;
+    }
+  
+    footer {
+      background-color: #343a40;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  
+    .social-buttons a {
+      margin: 0 5px;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- Top Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <!-- Logo -->
+        <a class="navbar-brand" href="index1.html">DeMi Amusement Park</a>
+
+        <!-- Hamburger button -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navigation items -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <!-- Home -->
+                <li class="nav-item">
+                    <a class="nav-link " href="destination1.html">Park Introduction</a>
+                </li>
+                <!-- About Me -->
+                <li class="nav-item">
+                    <a class="nav-link" href="關於我1.html">About Me</a>
+                </li>
+                <!-- Contact Us -->
+                <li class="nav-item">
+                    <a class="nav-link" href="聯絡我們1.html">Contact Us</a>
+                </li>
+                <!-- Login (Dropdown menu) -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="loginDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="loginDropdown">
+                        <li><a class="dropdown-item" href="consumption1.html">Store</a></li>
+                        <li><a class="dropdown-item" href="check-in1.html">Check-in</a></li>
+                        <li><a class="dropdown-item" href="buy-ticket1.html">Buy Ticket</a></li>
+                        <li><a class="dropdown-item" href="top-up1.html">Card Top-up</a></li>
+                        <li><a class="dropdown-item" href="balance1.html">Check Balance</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-language"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="languageDropdown">
+                        <li><a class="dropdown-item" href="index.html">中文</a></li>
+                        <li><a class="dropdown-item" href="index1.html">English</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<main>
+  <!-- Ticket and Top-up Form -->
+  <div class="container py-5">
+    <h1 class="text-center mb-4">Ticket Booking System</h1>
+    <form id="ticketForm">
+      <div id="userList">
+        <div class="row mb-3 user-entry">
+          <div class="col-md-6">
+            <input type="text" class="form-control user-name" placeholder="Enter Name">
+          </div>
+          <div class="col-md-4">
+            <select class="form-select ticket-type">
+              <option value="999">Full Ticket - $999</option>
+              <option value="850">Youth Ticket - $850</option>
+              <option value="650">Child Ticket - $650</option>
+              <option value="480">Discount Ticket - $480</option>
+              <option value="720">Afternoon Ticket - $720</option>
+            </select>
+          </div>
+          <div class="col-md-2">
+            <button type="button" class="btn btn-danger remove-user">Remove</button>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary mb-3" id="addUser">Add Ticket Buyer</button>
+      <div class="alert alert-info text-center" id="promptMessage">
+        Please scan your RFID card to complete the ticket purchase.
+      </div>
+    </form>
+    <div id="successMessage" class="alert alert-success text-center d-none" role="alert">
+      Data successfully saved to Firebase! Ticket information has been updated.
+    </div>
+    <div id="errorMessage" class="alert alert-danger text-center d-none" role="alert">
+      Insufficient balance or card not found, please top up first!
+    </div>
+  </div>
+
+  <!-- Ticket Price Information Block -->
+  <div class="container py-5">
+    <h2 class="text-center mb-4">DeMi Amusement Park Ticket Prices</h2>
+    <table class="table table-bordered text-center">
+      <thead>
+        <tr>
+          <th>Ticket Type</th>
+          <th>Price</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Full Ticket</td>
+          <td>$999</td>
+          <td>Adults 19 years and above.</td>
+        </tr>
+        <tr>
+          <td>Youth Ticket</td>
+          <td>$850</td>
+          <td>13 years and above, under 19 years old, with health insurance card.</td>
+        </tr>
+        <tr>
+          <td>Child Ticket</td>
+          <td>$650</td>
+          <td>6 years and above, under 13 years old, with health insurance card.</td>
+        </tr>
+        <tr>
+          <td>Discount Ticket</td>
+          <td>$480</td>
+          <td>Children aged 3 and above, under 6, or persons with disabilities.</td>
+        </tr>
+        <tr>
+          <td>Afternoon Ticket</td>
+          <td>$720</td>
+          <td>Available after 13:30, applicable to full ticket and youth ticket.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+
+<footer>
+  <p>© 2024 DeMi Amusement Park. All rights reserved.</p>
+  <p>Contact: info@example.com</p>
+  <div class="social-buttons">
+    <a href="https://www.facebook.com" target="_blank" class="text-white me-2"><i class="bi bi-facebook"></i></a>
+    <a href="https://www.instagram.com" target="_blank" class="text-white me-2"><i class="bi bi-instagram"></i></a>
+    <a href="https://www.twitter.com" target="_blank" class="text-white"><i class="bi bi-twitter"></i></a>
+  </div>
+</footer>
+
+<!-- Link to Bootstrap JS and Firebase -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+  import { getDatabase, ref, get, push, set } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCGRhmZyeaBCIRwoC-R2D0iiIx2zcXnky4",
+    authDomain: "david2463065-3fe00.firebaseapp.com",
+    databaseURL: "https://david2463065-3fe00-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "david2463065-3fe00",
+    storageBucket: "david2463065-3fe00.appspot.com",
+    messagingSenderId: "125089446047",
+    appId: "1:125089446047:web:3bf571c29b080ff896caaa"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const database = getDatabase(app);
+
+  // Play Speech
+  function playSpeech(text) {
+    const speech = new SpeechSynthesisUtterance(text);
+    speech.lang = 'en-US'; // Set language to English
+    window.speechSynthesis.speak(speech);
+  }
+
+  // RFID Card Reading
+  let rfidBuffer = "";
+  document.addEventListener("keydown", async (e) => {
+    if (e.target.classList.contains("user-name")) return;
+
+    if (e.key === "Enter") {
+      e.preventDefault();
+      const rfid = rfidBuffer.trim();
+      if (!rfid) {
+        alert("Please scan a valid RFID card!");
+        return;
+      }
+      rfidBuffer = ""; // Clear buffer
+
+      const users = [];
+      let totalCost = 0;
+      const userEntries = document.querySelectorAll(".user-entry");
+      userEntries.forEach((entry) => {
+        const name = entry.querySelector(".user-name").value.trim();
+        if (name) {
+          const ticketType = parseInt(entry.querySelector(".ticket-type").value, 10);
+          users.push({ name, ticketPrice: ticketType });
+          totalCost += ticketType;
+        }
+      });
+
+      if (users.length === 0) {
+        alert("Please enter at least one ticket buyer's name!");
+        return;
+      }
+
+      const balanceRef = ref(database, `balances/${rfid}`);
+      const ticketsRef = ref(database, `tickets/${rfid}`);
+      const transactionsRef = ref(database, `transactions/${rfid}`);
+      const checkRecordsRef = ref(database, `checkRecords/${rfid}`); // Added check-out record
+
+      try {
+        const balanceSnapshot = await get(balanceRef);
+        let currentBalance = 0;
+
+        if (balanceSnapshot.exists()) {
+          currentBalance = parseInt(balanceSnapshot.val().balance || balanceSnapshot.val(), 10);
+        } else {
+          document.getElementById("errorMessage").classList.remove("d-none");
+          playSpeech("Card not found, please check if the card is valid!");
+          return;
+        }
+
+        if (currentBalance < totalCost) {
+          document.getElementById("errorMessage").classList.remove("d-none");
+          playSpeech("Insufficient balance, please top up first!");
+          return;
+        }
+
+        // Update ticket records
+        await push(ticketsRef, { users, timestamp: new Date().toISOString() });
+
+        // Update balance
+        const newBalance = currentBalance - totalCost;
+        await set(balanceRef, newBalance);
+
+        // Record transaction
+        await push(transactionsRef, {
+          type: "Ticket Purchase",
+          amount: -totalCost,
+          timestamp: new Date().toISOString(),
+        });
+
+        // Check if there is an exit record and delete it
+        const checkRecordSnapshot = await get(checkRecordsRef);
+        if (checkRecordSnapshot.exists()) {
+          await set(checkRecordsRef, null); // Delete exit record
+          console.log("Exit record deleted!");
+        }
+
+        // Success message and speech
+        document.getElementById("successMessage").classList.remove("d-none");
+        document.getElementById("ticketForm").reset();
+        playSpeech("Ticket purchase successful, ticket information has been updated!");
+
+      } catch (error) {
+        console.error("Ticket purchase failed:", error);
+      }
+    } else if (/^\d$/.test(e.key)) {
+      rfidBuffer += e.key;
+    } else {
+      e.preventDefault();
+    }
+  });
+
+  // Add ticket buyer
+  document.getElementById("addUser").addEventListener("click", function() {
+    const userList = document.getElementById("userList");
+    const newUser = document.createElement("div");
+    newUser.classList.add("row", "mb-3", "user-entry");
+    newUser.innerHTML = `
+      <div class="col-md-6">
+        <input type="text" class="form-control user-name" placeholder="Enter Name">
+      </div>
+      <div class="col-md-4">
+        <select class="form-select ticket-type">
+          <option value="999">Full Ticket - $999</option>
+          <option value="850">Youth Ticket - $850</option>
+          <option value="650">Child Ticket - $650</option>
+          <option value="480">Discount Ticket - $480</option>
+          <option value="720">Afternoon Ticket - $720</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <button type="button" class="btn btn-danger remove-user">Remove</button>
+      </div>
+    `;
+    userList.appendChild(newUser);
+    // Remove ticket buyer
+    newUser.querySelector(".remove-user").addEventListener("click", function() {
+      newUser.remove();
+    });
+  });
+</script>
+</body>
+</html>
